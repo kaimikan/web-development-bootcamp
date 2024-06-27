@@ -1,0 +1,1 @@
+No project here - just a collection of useful snippets for better web design creation.
