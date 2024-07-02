@@ -1,0 +1,239 @@
+body {
+  width: 100vw;
+  max-width: 100%;
+  background-color: #ffffff;
+  font-family: 'Zilla Slab', serif;
+  font-weight: 300;
+  font-style: normal;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+div.header {
+  position: relative;
+  background-image: url('assets/images/bg3.jpg');
+  background-size: 100vw;
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 100vh;
+  max-height: 2774px;
+  padding-bottom: 0; /* (img-height / img-width * width) */
+  /* (2774 / 3699 * 100) */
+}
+
+#introduction {
+  padding-top: 30vh;
+  font-family: 'Patrick Hand', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #24352b;
+  font-size: 4rem;
+  text-shadow: 0 0 3px #cbd1dd, 0 0 5px #cbd1dd;
+}
+
+#subintroduction {
+  font-family: 'Roboto', serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #cbd1dd;
+  font-size: 2.1rem;
+  text-shadow: 0 0 3px #091215, 0 0 5px #091215;
+}
+
+#main-content {
+  padding-top: 3rem;
+  height: 100%;
+  gap: 1rem;
+}
+
+#me {
+  width: 15vw;
+  border-radius: 15vw;
+}
+
+#skills {
+  gap: 1rem;
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title-font {
+  font-size: 2.5rem;
+  font-family: 'Roboto', serif;
+  font-weight: 400;
+  font-style: bold;
+  color: #3a7d93;
+  /* text-shadow: 0 0 3px #cbd1dd, 0 0 5px #cbd1dd; */
+}
+
+#short-description {
+  width: 75%;
+}
+
+hr {
+  border: dotted #d7e8e8 11px;
+  border-bottom: none;
+  width: 10%;
+  margin: 2rem auto;
+}
+
+#skill-table {
+  max-width: 75%;
+  gap: 1rem;
+}
+
+.section-subtitle-font {
+  font-size: 1.25rem;
+  font-family: 'Roboto', serif;
+  font-weight: 400;
+  color: #3a7d93;
+}
+
+#contact {
+  gap: 1rem;
+  height: 100%;
+  margin-bottom: 3rem;
+}
+
+#contact-description {
+  width: 75%;
+}
+
+.btn {
+  background: #11cdd4;
+  background-image: -webkit-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -moz-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -ms-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -o-linear-gradient(top, #11cdd4, #11999e);
+  background-image: linear-gradient(to bottom, #11cdd4, #11999e);
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.footer {
+  position: relative;
+  background-image: url('assets/images/bg3_crop.png');
+  background-size: 100vw;
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  width: 100%;
+  height: 30vh;
+  max-height: 1000px;
+  padding-bottom: 0;
+  gap: 1rem;
+}
+
+.socials {
+  font-family: 'Roboto', serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #cbd1dd;
+  font-size: 1.5rem;
+  text-shadow: 0 0 3px #091215, 0 0 5px #091215;
+  text-decoration: none;
+}
+
+.social-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5vw;
+}
+
+.social-list a,
+.social-list img {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.social-list img {
+  filter: invert(1) drop-shadow(0 0 3px #091215);
+}
+
+#copyright {
+  font-family: 'Roboto', serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #091215;
+  font-size: 1rem;
+  text-shadow: 0 0 3px #cbd1dd, 0 0 5px #cbd1dd;
+}
+
+@media only screen and (max-width: 1500px) {
+  div.header {
+    height: 80vh;
+    background-color: blue;
+  }
+  #introduction {
+    padding-top: 5vh;
+    font-size: 4rem;
+  }
+
+  #subintroduction {
+    font-size: 2.1rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  div.header {
+    height: 65vh;
+    background-color: blue;
+  }
+  #introduction {
+    padding-top: 5vh;
+  }
+}
+
+@media only screen and (max-width: 893px) {
+  div.header {
+    height: 50vh;
+    background-color: blue;
+  }
+  #introduction {
+    padding-top: 3vh;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  div.header {
+    height: 40vh;
+    background-color: blue;
+  }
+  #introduction {
+    padding-top: 2vh;
+  }
+}
+
+@media only screen and (max-width: 592px) {
+  div.header {
+    height: 25vh;
+    background-color: blue;
+  }
+  #introduction {
+    padding-top: 1vh;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #introduction {
+    padding-top: 0vh;
+  }
+}
