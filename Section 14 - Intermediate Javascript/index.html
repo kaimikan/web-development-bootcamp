@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <title>JS testing</title>
+  </head>
+
+  <body>
+    <script>
+      // RANDOM
+      var rand = Math.random(); // 0 - 0.9999...
+      rand = rand * 6;
+      rand = Math.floor(rand) + 1;
+      console.log('Dice roll is ' + rand);
+
+      // CONDITIONS
+      if (rand === 6) {
+        console.log('Highest dice roll.');
+      } else if (rand > 3) {
+        console.log('Good roll.');
+      }
+
+      // ! - not, || - or, && - and
+
+      // BMI CALC PT. 2
+      function bmiCalculator(weight, height) {
+        var bmi = (weight / (height * height)).toFixed(0);
+        var interpretation;
+        if (bmi > 24.9) {
+          interpretation = 'Your BMI is ' + bmi + ', so you are overweight.';
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+          interpretation =
+            'Your BMI is ' + bmi + ', so you have a normal weight.';
+        } else {
+          interpretation = 'Your BMI is ' + bmi + ', so you are underweight.';
+        }
+        return interpretation;
+      }
+
+      bmiCalculator(77, 1.86);
+
+      // LEAP YEAR CALC
+      function isLeap(year) {
+        if (year % 4 == 0) {
+          if (year % 100 == 0) {
+            if (year % 400 == 0) {
+              return 'Leap';
+            } else {
+              return 'Not Leap';
+            }
+          } else {
+            return 'Leap';
+          }
+        } else {
+          return 'Not Leap';
+        }
+      }
+
+      console.log(isLeap(2004));
+
+      // ARRAYS
+      var guestList = ['Guest#1', 'Guest#2', 'Guest#3', 'Guest#4', 'Guest#5'];
+      console.log(guestList[2]);
+      console.log(guestList.includes('Guest#7'));
+
+      // FIZZ BUZZ
+      var output = [];
+      output.push(1);
+      // output.pop();
+
+      function fizzBuzz(number) {
+        if (number % 3 == 0 && number % 5 == 0) {
+          // output.push('FizzBuzz');
+          return 'FizzBuzz';
+        } else if (number % 3 == 0) {
+          // output.push('Fizz');
+          return 'Fizz';
+        } else if (number % 5 == 0) {
+          // output.push('Buzz');
+          return 'Buzz';
+        } else {
+          // output.push(number);
+          return number;
+        }
+      }
+
+      fizzBuzz(3);
+      //console.log(output);
+      console.log(fizzBuzz(3));
+
+      // WHOS PAYING
+      function whosPaying(names) {
+        var peopleCount = names.length;
+        var randomIndex = Math.floor(Math.random() * peopleCount);
+        var randomPerson = names[randomIndex];
+        return randomPerson + ' is going to buy lunch today!';
+      }
+
+      console.log(whosPaying(['Angela', 'Ben', 'Jenny', 'Michael', 'Chloe']));
+
+      // LOOPS
+
+      // WHILE LOOP - state - while player 1 is alive
+      count = 1;
+      var fizzBuzzArr = [];
+      while (count <= 15) {
+        fizzBuzzArr.push(fizzBuzz(count));
+        count++;
+      }
+      console.log(fizzBuzzArr);
+
+      // FOR LOOP - iterate
+      fizzBuzzArr = [];
+      for (var i = 0; i <= 15; i++) {
+        fizzBuzzArr.push(fizzBuzz(count));
+        count++;
+      }
+      console.log(fizzBuzzArr);
+
+      //FIBONACCI
+      function fibonacciGenerator(n) {
+        var fibonacci = [0, 1];
+        for (var i = 1; i < n; i++) {
+          fibonacci.push(fibonacci[i - 1] + fibonacci[i]);
+        }
+        return fibonacci.slice(0, n);
+      }
+
+      console.log(fibonacciGenerator(10));
+    </script>
+  </body>
+</html>
