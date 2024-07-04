@@ -1,0 +1,73 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.dice {
+  text-align: center;
+  display: inline-block;
+}
+
+body {
+  background-color: #393e46;
+}
+
+h1 {
+  margin: 30px;
+  font-family: 'Roboto';
+  text-shadow: 5px 0 #232931;
+  font-size: 4rem;
+  color: #4e8bcc;
+}
+
+button {
+  font-family: 'Roboto';
+  font-size: 1rem;
+  background-color: #4e8bcc;
+  color: #232931;
+  border: none;
+  width: 15vw;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px 0 #232931;
+}
+
+button:active {
+  background-color: #232931;
+  color: #4e8bcc;
+}
+
+p {
+  font-size: 2rem;
+  color: #4e97cc;
+  text-shadow: 2px 0 #232931;
+  font-family: 'Roboto';
+}
+
+.even {
+  color: #564ddc;
+}
+
+.loser {
+  color: #dc4d57;
+}
+
+.winner {
+  color: #4ddc73;
+}
+
+img {
+  width: 80%;
+  filter: grayscale() brightness(1.25);
+}
+
+footer {
+  margin-top: 5%;
+  color: #eeeeee;
+  text-align: center;
+  font-family: 'Roboto';
+}
