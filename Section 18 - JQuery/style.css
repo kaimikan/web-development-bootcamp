@@ -1,0 +1,14 @@
+body {
+  background: #6b6b6b;
+  height: 100vh;
+  width: 100vw;
+}
+
+.big-title {
+  font-size: 2.5rem;
+  font-family: cursive;
+}
+
+.margin-50 {
+  margin: 50px;
+}
