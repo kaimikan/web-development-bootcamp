@@ -1,0 +1,19 @@
+ls - lists all files in directory
+
+cd *directory* - open a new directory
+cd .. - go back one level
+
+alt + mouse click - move to a specific point in line
+ctrl + u - clear line
+
+mkdir *name* - create a new directory called *name*
+
+touch *name*.*extension* - create a new *extension* file called *name*
+start *name*.*extension* - open the file ^
+code *name*.*extension* - open the file in VSCode
+
+rm *name*.*extension* - remove a file
+rm * - remove all files from a directory
+rm -r - remove a directory
+
+pwd - print working directory
