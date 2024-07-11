@@ -1,0 +1,46 @@
+EJS - Embedded Javascript is a templating language, used for Separation of Concerns between 
+Functionality (Backend) and Style & Structure (Frontend)
+
+EJS lets us run some javascript in an html file pretty much
+
+res.render is used for opening with parameters
+res.send & res.sendFile are static
+
+---
+
+EJS TAGS
+
+<%= variable _ JS Output %>
+
+<% console.log('hello') _ JS Execute %>
+
+<%- <h1>HELLO</h1> _ Render HTML %>
+
+<%% escape tags _ Show <% or %> in an ejs file  %%>
+
+<%# this is a comment _ Stop Execution %>
+
+<%- include('header.ejs') _ Insert another EJS File %>
+
+---
+
+EJS Passing Data
+
+if we want to check if a variable is even defined in an ejs file
+we need to check it like this
+if (locals.variableName) ... -> notice locals, it contains the whole res.render variable data
+https://www.geeksforgeeks.org/express-js-res-locals-property/
+
+---
+
+Static Files
+
+
+- sets a static main directory which serves as the root to all other paths
+app.use(express.static("public"))
+
+- for example for ejs files the default path starts in the views folder so instead of views/*filePath* we can do *filePath*
+
+- in the case of views/partials/header.ejs before and after -> app.use(express.static("public"))
+- better example <link rel="stylesheet" href="../../styles/layout.css">
+- we can do <link rel="stylesheet" href="/styles/layout.css">
