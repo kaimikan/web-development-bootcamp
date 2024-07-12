@@ -30,6 +30,10 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
+app.get('/add', (req, res) => {
+  res.render('add.ejs', { isAdmin: IS_USER_ADMIN });
+});
+
 app.get('/blog', (req, res) => {
   res.render('blog.ejs', { posts: blogPosts, isAdmin: IS_USER_ADMIN });
 });
