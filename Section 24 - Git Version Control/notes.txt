@@ -1,0 +1,32 @@
+READABILITY:
+commit messages are supposed to be in present tense
+example: Complete frontend (instead of Completed frontend)
+
+---
+
+COMMANDS:
+git init / git clone *url*
+git pull
+git status
+git branch *branch_name*
+git branch
+git checkout -b *branch_name*
+git merge *branch_name*
+git add *file_name*
+git add *
+git log
+git commit -m
+git commit --amend 
+  exit vim - :wq -> saves & leaves / :q! -> leave without saving 
+git reset
+git push
+
+git diff *file_name* / git diff - shows the differences between the current version and last commit
+git checkout -- *file_name* - revert file to the last commited version of it
+-- means "treat every argument after this point as a file name, no matter what it looks like."
+
+---
+
+PRACTICE ENVIRONMENT:
+git exercises - https://learngitbranching.js.org/
+good pull request beginner opportunities - https://github.com/MunGell/awesome-for-beginners
