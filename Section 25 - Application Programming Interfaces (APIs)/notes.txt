@@ -1,0 +1,33 @@
+Authentication - a user enters a username and password
+Authorization - a client uses a key to use the API
+
+if a website is not using https there is no layer of encryption
+for the base64 encoded username and password that are passed 
+through it, making them easily fetchable by others
+
+Token Based Authentication - OAUTH, OAUTH 2.0 is the industry standard
+
+---
+
+if something returns a Promise it should be handled with async/await
+
+async function someFunction() {
+  const response = await fetchSomething();
+
+  // any code below here will wait until response has obtained the value
+  // this is because 1. this is happening inside an async function and
+  // 2. we have put await in front of the fetching method
+}
+
+---
+
+interesting way to have multiple actions for a single form
+<form id="myForm" method="post">
+  <label for="submit">Route:</label>
+  <input id="get" type="submit" value="GET" formaction="/get-secret">
+  <input id="post" type="submit" value="POST" formaction="/post-secret">
+  <input id="put" type="submit" value="PUT" formaction="/put-secret">
+  <input id="patch" type="submit" value="PATCH" formaction="/patch-secret">
+  <input id="delete" type="submit" value="DELETE" formaction="/delete-secret">
+</form>
+// notice formaction="/..."
