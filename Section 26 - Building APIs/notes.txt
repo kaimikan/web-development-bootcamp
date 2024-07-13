@@ -1,0 +1,11 @@
+REST (when referring to :API architecture) - representational state transfer
+
+What makes an API RESTful? ->
+1. It uses standard HTTP Methods (GET, POST, PUT, PATCH, DELETE)
+2. JSON Output: It should have a standard data format as a response output (JSON)
+3. Client-Server: Clients and Servers are separate, they are not on the same system but message each other over a network. This is scalable.
+4. Stateless: Each request from the client to the server should contain all the information needed to process the request so the server should not be saving any client-side states. 
+Allows the server to serve many clients.
+5. Resource-Based: Uses a URL/URI to locate specific resources.
+
+The Internet is one of the most successful RESTful implementations!

@@ -1,0 +1,11 @@
+got some help with trying testing from mrvlicecode
+here are some notes:
+
+- testing done with mocha, chai and supertest dependencies
+
+- notice export default app in the bottom of index.js -> that's how we get the endpoints in endpoints.test.js
+
+- npm run test 'tests/**/example.test.js' -> replace example.test.js with any other test file name in the tests folder to run it
+- npm run test --file tests/example.test.js -> also works ^
+
+- chai documentation for commands reference: https://www.chaijs.com/api/bdd/
