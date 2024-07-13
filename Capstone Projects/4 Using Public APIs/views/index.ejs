@@ -1,0 +1,34 @@
+<%- include('partials/header.ejs') %>
+
+<% if (locals.art) { %>
+    <div class="content">
+      <div class="img-container">
+        <% if (art.image !== "") { %>
+        <img src="<%= art.image %>" alt="<%= art.title %>" />
+        <% } else { %>
+        <span>No image to show.</span>
+        <% } %>
+      </div>
+
+      <div class="artist-info">
+        <div class="name">
+          <span><%= art.artistName %></span>
+        </div>
+        <div class="bio">
+          <span><%= art.artistBio %></span>
+        </div>
+      </div>
+
+      <form action="/" method="get">
+        <input type="submit" name="show-art" value="Show Random Art Piece" />
+      </form>
+    </div>
+    <%- include('partials/footer.ejs') %>
+    <% } else { %>
+    <span>
+      There was a problem fetching an art piece. Apologies, there is an amateur
+      programmer on the loose.
+    </span>
+    <% } %>
+  </body>
+</html>
