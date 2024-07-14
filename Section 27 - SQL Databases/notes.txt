@@ -1,0 +1,79 @@
+Types of Databases:
+ - SQL DB - Structured Query Language (Examples: Oracle, PostgreSQL*, MySQL, SQLite)
+  = predefined table fields
+  = also known as relational databases
+  = very reliable
+
+ - NoSQL DB - No(t only) SQL (Examples: Mongo, Redis, Dynamo)
+  = flexible - you can change the structure in an instance without 
+  needed to redefine the entire db -> data can scale vertically + horizontally
+  = readability is better - looks like json
+  = may end up in worse process speed duo to non-concrete structure which makes mistakes in optimization easier
+
+CRUD - Create Read Update Destroy
+
+create a db table:
+CREATE TABLE customers (
+  id INT Not NULL, 
+  first_name STRING, 
+  last_name STRING, 
+  address STRING,
+  PRIMARY KEY (id)
+)
+
+CREATE TABLE products (
+  id INT Not NULL, 
+  name STRING,
+  price FLOAT,
+  PRIMARY KEY (id)
+)
+
+insert entry into table:
+// important single quotes for string
+INSERT INTO products VALUES (2, 'pen2', 1.20)
+INSERT INTO customers VALUES (1, 'name1_1', 'name2_1', 'street1')
+INSERT INTO customers VALUES (2, 'name1_2', 'name2_2', 'street2')
+
+insert partial entry into table:
+INSERT INTO products (id, name) VALUES (3, 'pencil')
+
+display everything from table:
+SELECT * FROM products 
+
+display columns from table:
+SELECT name, price FROM products 
+
+display columns from table with condition:
+SELECT name, price FROM products WHERE id=1
+
+update specific entries (without a condition, it would update all):
+UPDATE products SET price = 0.80 WHERE name = 'pencil'
+
+add another column to a pre-existing table:
+alter TABLE products ADD stock INT
+
+delete table entries (without a condition, it would delete all)
+DELETE FROM products WHERE name = 'pen2'
+
+foreign and primary keys (how to connect tables):
+CREATE TABLE orders (
+  id INT Not NULL, 
+  order_number INT,
+  customer_id INT,
+  product_id INT,
+  PRIMARY KEY (id)
+  FOREIGN KEY (customer_id) REFERENCES customers(id)
+  FOREIGN KEY (product_id) REFERENCES products(id)  
+)
+
+INSERT INTO orders VALUES (1, 4362, 2, 1)
+
+joining order with customer:
+SELECT orders.order_number, customers.first_name, customers.last_name, customers.address 
+FROM orders 
+INNER JOIN customers ON orders.customer_id = customers.id
+
+joining order with product:
+SELECT orders.order_number, products.name, products.price, products.stock 
+FROM orders 
+INNER JOIN products ON orders.product_id = products.id
