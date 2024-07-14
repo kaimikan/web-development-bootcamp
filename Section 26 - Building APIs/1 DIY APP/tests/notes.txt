@@ -8,4 +8,6 @@ here are some notes:
 - npm run test 'tests/**/example.test.js' -> replace example.test.js with any other test file name in the tests folder to run it
 - npm run test --file tests/example.test.js -> also works ^
 
+- when doing post requests in the tests, make sure to have app.use(bodyParser.json()); in your index.js file
+
 - chai documentation for commands reference: https://www.chaijs.com/api/bdd/

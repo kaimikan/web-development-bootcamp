@@ -3,8 +3,10 @@ import bodyParser from 'body-parser';
 
 const app = express();
 const port = 3000;
-const masterKey = '4VGP2DN-6EWM4SJ-N6FGRHV-Z3PR3TT';
+const masterKey = '123123'; //'4VGP2DN-6EWM4SJ-N6FGRHV-Z3PR3TT';
 
+// we need the bodyParser json to help with the add.test.js request since otherwise the body is undefined
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //1. GET a random joke
@@ -25,17 +27,137 @@ app.get('/jokes/:id', (req, res) => {
   res.json({ foundJoke });
 });
 
+function filterData(array, query) {
+  return array.filter((item) => {
+    return Object.keys(query).every((key) => {
+      // need to parse to int if we are filtering by ids
+      if (key === 'id') {
+        return item[key] === Number(query[key], 10);
+      }
+      return item[key] === query[key];
+    });
+  });
+}
+
 //3. GET a jokes by filtering on the joke type
+app.get('/filter', (req, res) => {
+  console.log('TEST: ', req.query.id, req.query);
+
+  const typeFilteredJokes = jokes.filter(
+    (joke) => req.query.jokeType === joke.jokeType
+  );
+
+  console.log('QUERY:', req.query);
+
+  const superFilteredJokes = filterData(jokes, req.query);
+
+  console.log('Filter result: ', superFilteredJokes);
+
+  res.json({ superFilteredJokes });
+});
 
 //4. POST a new joke
+app.post('/jokes', (req, res) => {
+  const text = req.body.jokeText;
+  const type = req.body.jokeType;
+  const newJoke = {
+    id: jokes.length + 1,
+    jokeText: text,
+    jokeType: type,
+  };
+
+  jokes.push(newJoke);
+
+  console.log('new joke: ', newJoke);
+
+  res.json(newJoke);
+});
 
 //5. PUT a joke
+app.put('/jokes/:id', (req, res) => {
+  const jokeID = Number(req.params.id, 10);
+  let jokeToEdit = {};
+
+  // there is a findIndex method as well, check solution.js for example
+  jokeToEdit = jokes.find((joke) => Number(joke.id, 10) === jokeID);
+
+  // here we check if any match was found
+  // in retrospect should be done in some other calls as well but will leave it as is
+  if (Object.keys(jokeToEdit).length !== 0) {
+    jokeToEdit.jokeText = req.body.jokeText;
+    jokeToEdit.jokeType = req.body.jokeType;
+
+    jokes[Number(jokeToEdit.id, 10) - 1] = jokeToEdit;
+
+    res.json(jokes[Number(jokeToEdit.id, 10) - 1]);
+  } else {
+    res.json({ err: 'No element with that id' });
+  }
+});
 
 //6. PATCH a joke
+app.patch('/jokes/:id', (req, res) => {
+  const jokeID = Number(req.params.id, 10);
+
+  const jokeIndex = jokes.findIndex((joke) => Number(joke.id, 10) === jokeID);
+
+  // what the findIndex method returns if no matches were found
+  const NO_MATCH_ID_RETURN = -1;
+  if (jokeIndex != NO_MATCH_ID_RETURN) {
+    const text = req.body.jokeText;
+    const type = req.body.jokeType;
+    // different way of doing it in solution.js
+    if (text !== undefined) jokes[jokeIndex].jokeText = text;
+    if (type !== undefined) jokes[jokeIndex].jokeType = type;
+
+    // notice the shorthand if statements -> (condition) ? do if true : do if false
+    // jokes[jokeIndex] = {
+    //   id: jokes[jokeIndex].id,
+    //   jokeText: text === undefined ? jokes[jokeIndex].jokeText : text,
+    //   jokeType: type === undefined ? jokes[jokeIndex].jokeType : type,
+    // };
+
+    res.json(jokes[jokeIndex]);
+  } else {
+    res.json({ err: 'No element with that id' });
+  }
+});
 
 //7. DELETE Specific joke
+app.delete('/joke/:id', (req, res) => {
+  const jokeID = Number(req.params.id, 10);
+
+  const jokeIndex = jokes.findIndex((joke) => Number(joke.id, 10) === jokeID);
+
+  const NO_MATCH_ID_RETURN = -1;
+  if (jokeIndex != NO_MATCH_ID_RETURN) {
+    jokes.splice(jokeIndex, 1);
+
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(404);
+  }
+});
 
 //8. DELETE All jokes
+app.delete('/jokes/all', (req, res) => {
+  // had to change single joke delete path from /jokes/:id to /joke/:id cause it was not letting us access this endpoint, another way
+  // to do it would be to keep the original names, but swap their places
+  /* If you implement your handler for /jokes/:id above 
+  /jokes/new, the route for https://localhost:3000/jokes/new will NOT reach its designated handler. */
+  console.log(req.query.key);
+  const userKey = req.query.key;
+  const isUserAuthorised = userKey === masterKey;
+
+  console.log(isUserAuthorised);
+  if (isUserAuthorised) {
+    jokes = [];
+
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(403);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Successfully started server on port ${port}.`);
