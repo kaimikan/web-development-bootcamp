@@ -1,0 +1,68 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+  <span>
+    <% if (locals.reviews) { %>
+    <h3>Add Book Review:</h3>
+    <form class="add-form flex" action="/add" method="post">
+      <label for="add-title">Book Title: </label>
+      <input
+        id="add-title"
+        type="text"
+        name="title"
+        value=""
+        autocomplete="off"
+      />
+
+      <label for="add-img-url">Image URL: </label>
+      <input
+        id="add-img-url"
+        type="text"
+        name="imgURL"
+        value=""
+        autocomplete="off"
+      />
+
+      <label for="add-review">Review: </label>
+      <textarea
+        id="add-review"
+        type="text"
+        name="review"
+        autocomplete="off"
+      ></textarea>
+
+      <label for="add-notes">Notes: </label>
+      <textarea
+        id="add-notes"
+        type="text"
+        name="notes"
+        autocomplete="off"
+      ></textarea>
+
+      <button class="add" type="submit">Add</button>
+    </form>
+    <h3>Reviews:</h3>
+    <ul>
+      <% for(let review of reviews) { %>
+      <li>
+        <p class="book-title">
+          <%= review.book_title %>
+          <form class="update-form" action="/init-update?id=<%= review.id %>" method="post">
+            <input type="submit" name="update-btn" value="Edit">
+          </form>
+
+          <form class="delete-form" action="/delete" method="post">
+            <input type="text" name="reviewID" value="<%= review.id %>" hidden>
+            <input type="submit" name="delete-btn" value="Delete">
+          </form>
+        </p>
+        <p><%= review.image_url %></p>
+        <p><%= review.review %></p>
+        <p><%= review.notes %></p>
+      </li>
+      <% } %>
+    </ul>
+    <% } else if (locals.error) { %> <%= error %> <% } else { %>
+    <em>Uh-oh, getting nothing from backend</em> <% } %>
+  </span>
+</body>
