@@ -1,10 +1,10 @@
 <%- include("partials/header.ejs") %>
 
 <body>
-  <span>
+  <div class="content">
     <% if (locals.reviews) { %>
-    <h3>Add Book Review:</h3>
-    <form class="add-form flex" action="/add" method="post">
+    <h3>Add Book Review: <button class="btn img-btn drop-btn" id="toggle-add-form-btn"><img id="toggle-add-form-img" src = "svg/dropdown/arrow-down-svgrepo-com.svg" alt="dropdown"/></button></h3>
+    <form class="add-form flex" id="add-form" action="/add" method="post">
       <label for="add-title">Book Title: </label>
       <input
         id="add-title"
@@ -37,32 +37,69 @@
         type="text"
         name="notes"
         autocomplete="off"
+        white-space="pre-wrap"
       ></textarea>
 
-      <button class="add" type="submit">Add</button>
+      <button class="btn add-btn" type="submit">Add</button>
     </form>
-    <h3>Reviews:</h3>
-    <ul>
-      <% for(let review of reviews) { %>
-      <li>
-        <p class="book-title">
-          <%= review.book_title %>
-          <form class="update-form" action="/init-update?id=<%= review.id %>" method="post">
-            <input type="submit" name="update-btn" value="Edit">
-          </form>
 
-          <form class="delete-form" action="/delete" method="post">
-            <input type="text" name="reviewID" value="<%= review.id %>" hidden>
-            <input type="submit" name="delete-btn" value="Delete">
-          </form>
-        </p>
-        <p><%= review.image_url %></p>
-        <p><%= review.review %></p>
-        <p><%= review.notes %></p>
-      </li>
+    <hr>
+
+    <h3>Reviews:</h3>
+    <div class="book-reviews flex">
+      <% for(let review of reviews) { %>
+        <div class="book-single-review">
+          <figure>
+            <img class="book-image" src="<%= review.image_url %>" alt="<%= review.book_title %>">
+          </figure>
+          <p class="book-title">
+            <%= review.book_title %>
+          </p>
+
+          <p>
+            <form class="update-form" action="/init-update?id=<%= review.id %>" method="post">
+              <button type="submit" name="update-btn" class="img-btn btn edit-btn">
+                <img src = "svg/edit/edit-52.svg" alt="edit"/>
+              </button>
+            </form>
+            <form class="delete-form" action="/delete" method="post">
+              <input type="text" name="reviewID" value="<%= review.id %>" hidden>
+              <button type="submit" name="delete-btn" class="img-btn btn delete-btn">
+                <img src = "svg/delete/delete-60.svg" alt="edit"/>
+              </button>
+            </form>
+          </p>
+
+          <p>
+            
+          </p>
+          <p class="book-review"><%= review.review %></p>
+          <p class="book-notes"><%= review.notes %></p>
+        </div>
+        <hr>
+        <br>
       <% } %>
-    </ul>
+    </div>
     <% } else if (locals.error) { %> <%= error %> <% } else { %>
     <em>Uh-oh, getting nothing from backend</em> <% } %>
-  </span>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const button = document.getElementById("toggle-add-form-btn");
+        const form = document.getElementById("add-form");
+        const img = document.getElementById('toggle-add-form-img')
+
+
+        button.onclick = function() {
+          if (form.style.display === "none" || form.style.display === "") {
+            form.style.display = "flex";
+            img.setAttribute('src', "svg/dropdown/arrow-up-svgrepo-com.svg")
+          } else {
+            form.style.display = "none";
+            img.setAttribute('src', "svg/dropdown/arrow-down-svgrepo-com.svg")
+          }
+        };
+      });
+    </script>
+  </div>
 </body>

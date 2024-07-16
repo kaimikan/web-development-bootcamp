@@ -1,7 +1,7 @@
 <%- include("partials/header.ejs") %>
 
 <body>
-  <span>
+  <div class="content">
     <% if (locals.review) { %>
     <h3>Update Book Review:</h3>
     <form class="update-form-big flex" action="/update" method="post">
@@ -38,6 +38,7 @@
         type="text"
         name="review"
         autocomplete="off"
+        white-space="pre-wrap"
       ><%= review.review %></textarea>
 
       <label for="update-notes">Notes: </label>
@@ -46,12 +47,13 @@
         type="text"
         name="notes"
         autocomplete="off"
+        white-space="pre-wrap"
       ><%= review.notes %></textarea>
 
-      <button class="update" type="submit">Update</button>
+      <button class="update btn edit-btn" type="submit" >Update</button>
     </form>
     </ul>
     <% } else if (locals.error) { %> <%= error %> <% } else { %>
     <em>Uh-oh, getting nothing from backend</em> <% } %>
-  </span>
+  </div>
 </body>

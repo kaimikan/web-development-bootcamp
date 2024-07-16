@@ -1,3 +1,6 @@
+-- the db name is book_archive
+-- book_reviews.csv contains 3 books
+
 CREATE TABLE books_review (
 	id SERIAL PRIMARY KEY,
 	book_title VARCHAR(100) NOT NULL,
