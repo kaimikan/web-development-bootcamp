@@ -1,0 +1,7 @@
+All the project before17-note-keeper-react-app were not ran on a local environment but instead on codesandbox.
+They have deprecated code that would need to be changed in order to run them.
+
+I put them here for safekeeping and to have examples of key features on hand.
+
+17-note-keeper-react-app is the product of all of them combined and it should actually run.
+The others should be able to run in codesandbox without much problems and locally after some problem fixing.

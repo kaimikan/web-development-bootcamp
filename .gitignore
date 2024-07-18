@@ -145,3 +145,6 @@ dist
 
 # automatically created macOS Finder file
 .DS_Store
+
+# ignore codesandbox files
+.codesandbox

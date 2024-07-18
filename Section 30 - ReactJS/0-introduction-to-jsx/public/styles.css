@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #212121;
+  color: #dadada;
+}
+
+.heading {
+  background-color: #110e0e;
+}
+
+img.picsum-img {
+  border: 3px solid white;
+}
